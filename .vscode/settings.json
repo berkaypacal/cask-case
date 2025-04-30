@@ -1,0 +1,11 @@
+{
+    "workbench.colorCustomizations": {
+        "[Name of the Current Theme you are using]": {
+            "titleBar.activeBackground": "#191919cc",
+            "titleBar.activeForeground": "#ffffff"
+        },
+        "activityBar.background": "#571801",
+        "titleBar.activeBackground": "#7A2201",
+        "titleBar.activeForeground": "#FFF9F7"
+    }
+}
