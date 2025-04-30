@@ -1,12 +1,8 @@
-import React from 'react'
-import SplashScreen from './src/main-screens/SplashScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigation/AppNavigator';
 
-export default class App extends React.Component {
-    constructor( props ) {
-        super( props )
-    }
-
-    /*
+export default function App() {
+  /*
         Örnek "Request":
 
         const data = {
@@ -20,25 +16,20 @@ export default class App extends React.Component {
             "pn_type": 3,
             "pn_delay": 1,
             "dev_mode": false
-        }
+        };
 
-        const response = await fetch(
-            "https://challenges.cask.com.tr/api",
-            {
-                method: "POST",
-                cache: "no-cache",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        const response = await fetch("https://challenges.cask.com.tr/api", {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
      */
-
-
-    render() {
-        return <SplashScreen
-                style={{width:'100%', flex:1, backgroundColor: 'blue'}}
-            />
-    }
+  return (
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+  );
 }
