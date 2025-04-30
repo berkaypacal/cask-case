@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const TabTwo = () => {
+const ImageScreen = () => {
   return (
     <View>
-      <Text>TabTwo</Text>
+      <Text>ImageScreen</Text>
     </View>
   );
 };
 
-export default TabTwo;
+export default ImageScreen;
