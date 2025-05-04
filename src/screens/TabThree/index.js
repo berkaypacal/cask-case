@@ -5,6 +5,7 @@ import {useNotificationStore} from '../../hooks/useNotificationStore';
 import styles from './styles';
 import NotificationItem from '../../components/base/NotificationItem';
 import {navigateToNotificationTarget} from '../../utility/navigation.helper';
+import BottomTabLabels from '../../constants/BottomTabLabels';
 
 const TabThree = () => {
   const notifications = useNotificationStore();
@@ -17,7 +18,7 @@ const TabThree = () => {
   }, []);
 
   return (
-    <LayoutComponent title="Tab 3">
+    <LayoutComponent title={BottomTabLabels.TAB_THREE}>
       <FlatList
         data={notifications}
         keyExtractor={(_, i) => i.toString()}

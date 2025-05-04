@@ -7,6 +7,7 @@ import MessageTypePicker from '../../components/base/MessageTypePicker';
 import DelayInput from '../../components/base/DelayInput';
 import SendButton from '../../components/base/SendButton';
 import {useFirebaseMessaging} from '../../hooks/useFirebaseMessaging';
+import BottomTabLabels from '../../constants/BottomTabLabels';
 
 const TabTwo = () => {
   const [pnType, setPnType] = useState('');
@@ -14,7 +15,7 @@ const TabTwo = () => {
   const {token, hasPermission} = useFirebaseMessaging();
 
   return (
-    <LayoutComponent title="Tab 2">
+    <LayoutComponent title={BottomTabLabels.TAB_TWO}>
       <View style={styles.container}>
         <TokenDisplay token={token || 'No Token'} />
 
