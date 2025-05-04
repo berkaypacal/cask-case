@@ -1,31 +1,16 @@
-import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
-
-import { getApp } from '@react-native-firebase/app';
-import { getMessaging, onMessage } from '@react-native-firebase/messaging';
-import { handleIncomingMessage } from './src/firebase/messageHandler';
+import { navigationRef } from './src/utility/navigation.helper';
 import { useFirebaseMessaging } from './src/hooks/useFirebaseMessaging';
-import notifiee, { AndroidImportance } from '@notifee/react-native';
+import { useNotificationHandler } from './src/hooks/useNotificationHandler';
 
 export default function App() {
   const { hasPermission } = useFirebaseMessaging();
 
-  useEffect(() => {
-    if (!hasPermission) return;
-
-    const messaging = getMessaging(getApp());
-    const unsubscribe = onMessage(messaging, handleIncomingMessage);
-    notifiee.createChannel({
-      id: 'default',
-      name: 'Default Channel',
-      importance: AndroidImportance.HIGH,
-    });
-    return () => unsubscribe();
-  }, [hasPermission]);
+  useNotificationHandler(hasPermission);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <AppNavigator />
     </NavigationContainer>
   );
