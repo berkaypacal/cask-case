@@ -1,4 +1,5 @@
 import axiosInstance from './index';
+import {ADMMDLID, SCOPE} from '@env';
 
 /**
  * Sends a push notification request to the backend
@@ -11,9 +12,8 @@ export const sendNotification = async ({fcm_token, pn_type, pn_delay}) => {
   const staticPayload = {
     v: 1,
     platform: 'app',
-    admmdlid:
-      '12f3894ed72fc7d4e3b98688b20513e20a3fa1adbd08b9662412322138d26533',
-    scope: '8fbff85cb7a2b8cbd53b3086c0b16d4c1e96a5d748cbf8761bace32ab294e83a',
+    admmdlid: ADMMDLID,
+    scope: SCOPE,
     dev_mode: false,
     fcm_token,
     pn_type: parseInt(pn_type),
