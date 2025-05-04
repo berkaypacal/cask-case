@@ -3,15 +3,11 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     padding: 20,
-    alignItems: 'center',
   },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 8,
-  },
-  body: {
+  errorText: {
+    textAlign: 'center',
+    marginTop: 20,
     fontSize: 16,
-    color: '#333',
+    color: '#999',
   },
 });
