@@ -30,7 +30,7 @@ const TabTwo = () => {
       <View style={styles.container}>
         <TokenDisplay token={token || 'No Token'} />
 
-        {!hasPermission ? (
+        {!hasPermission && token ? (
           <Text style={styles.warning}>Notification permission denied.</Text>
         ) : (
           <>

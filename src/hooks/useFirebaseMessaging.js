@@ -35,6 +35,7 @@ export const useFirebaseMessaging = () => {
 
         const fcmToken = await messaging.getToken();
         setToken(fcmToken);
+        await messaging.registerDeviceForRemoteMessages();
       } catch (err) {
         console.error('FCM Token Error:', err);
         setHasPermission(false);
@@ -49,8 +50,8 @@ export const useFirebaseMessaging = () => {
       if (hasPermission) {
         const messaging = getMessaging(getApp());
 
+        await messaging.registerDeviceForRemoteMessages();
         const fcmToken = await messaging.getToken();
-        messaging.registerDeviceForRemoteMessages;
         setToken(fcmToken);
       }
     };

@@ -30,9 +30,10 @@ const AppNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         ...tabBarStyles,
       }}
-      initialRouteName={ScreenNames.TAB_TWO}>
+      initialRouteName={ScreenNames.TAB_ONE}>
       <Tab.Screen
         name={ScreenNames.TAB_ONE}
         component={TabOneStack}
