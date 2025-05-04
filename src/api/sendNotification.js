@@ -9,22 +9,25 @@ import {ADMMDLID, SCOPE} from '@env';
  * @returns {Promise<Object>}
  */
 export const sendNotification = async ({fcm_token, pn_type, pn_delay}) => {
-  const staticPayload = {
-    v: 1,
-    platform: 'app',
-    admmdlid: ADMMDLID,
-    scope: SCOPE,
-    dev_mode: false,
-    fcm_token,
-    pn_type: parseInt(pn_type),
-    pn_delay: parseInt(pn_delay),
-  };
-
-  const {data} = await axiosInstance.post('/api', staticPayload, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-
-  return data;
+  try {
+    const staticPayload = {
+      v: 1,
+      platform: 'app',
+      admmdlid: ADMMDLID,
+      scope: SCOPE,
+      dev_mode: false,
+      fcm_token,
+      pn_type: parseInt(pn_type),
+      pn_delay: parseInt(pn_delay),
+    };
+    const {data} = await axiosInstance.post('/api', staticPayload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error in sendNotification:', error);
+    throw error;
+  }
 };

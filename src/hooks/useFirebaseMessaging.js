@@ -44,5 +44,19 @@ export const useFirebaseMessaging = () => {
     init();
   }, []);
 
+  useEffect(() => {
+    const refreshToken = async () => {
+      if (hasPermission) {
+        const messaging = getMessaging(getApp());
+
+        const fcmToken = await messaging.getToken();
+        messaging.registerDeviceForRemoteMessages;
+        setToken(fcmToken);
+      }
+    };
+
+    refreshToken();
+  }, [hasPermission]);
+
   return {token, hasPermission};
 };

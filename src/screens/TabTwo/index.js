@@ -17,6 +17,7 @@ const TabTwo = () => {
   const {mutate, isPending} = useSendNotification();
 
   const handleSend = useCallback(() => {
+    if (!token) return;
     mutate({
       fcm_token: token,
       pn_type: Number(pnType),
