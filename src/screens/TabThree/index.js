@@ -1,13 +1,36 @@
 import React from 'react';
-import {Text} from 'react-native';
-import LayoutComponent from '../../components/base/LayoutComponent';
+import {FlatList, Text, View, StyleSheet} from 'react-native';
+import {useNotificationStore} from '../../hooks/useNotificationStore';
 
-const TabThree = () => {
+const NotificationScreen = () => {
+  const notifications = useNotificationStore();
+
   return (
-    <LayoutComponent title="Tab 3">
-      <Text>Native Stack Navigator</Text>
-    </LayoutComponent>
+    <FlatList
+      data={notifications}
+      keyExtractor={(_, i) => i.toString()}
+      renderItem={({item}) => (
+        <View style={styles.item}>
+          <Text style={styles.title}>
+            {item.notification?.title || 'Başlık yok'}
+          </Text>
+          <Text>{item.notification?.body || 'Mesaj yok'}</Text>
+        </View>
+      )}
+      contentContainerStyle={styles.container}
+    />
   );
 };
 
-export default TabThree;
+const styles = StyleSheet.create({
+  container: {padding: 16},
+  item: {
+    padding: 12,
+    marginBottom: 10,
+    backgroundColor: '#eee',
+    borderRadius: 8,
+  },
+  title: {fontWeight: 'bold', marginBottom: 4},
+});
+
+export default NotificationScreen;

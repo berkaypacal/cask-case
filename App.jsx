@@ -1,32 +1,29 @@
+import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
 
+import { getApp } from '@react-native-firebase/app';
+import { getMessaging, onMessage } from '@react-native-firebase/messaging';
+import { handleIncomingMessage } from './src/firebase/messageHandler';
+import { useFirebaseMessaging } from './src/hooks/useFirebaseMessaging';
+import notifiee, { AndroidImportance } from '@notifee/react-native';
+
 export default function App() {
-  /*
-        Örnek "Request":
+  const { hasPermission } = useFirebaseMessaging();
 
-        const data = {
-            "v": 1,
-            "platform": "app",
-            "admmdlid": "12f3894ed72fc7d4e3b98688b20513e20a3fa1adbd08b9662412322138d26533",
-            "scope": "8fbff85cb7a2b8cbd53b3086c0b16d4c1e96a5d748cbf8761bace32ab294e83a",
-//-->          ^ Yukarıdaki 4 key API'ın çalışması için zorunludur. Eksik olmaları durumunda API hata (418) verecektir.
+  useEffect(() => {
+    if (!hasPermission) return;
 
-            "fcm_token": fcm_token,
-            "pn_type": 3,
-            "pn_delay": 1,
-            "dev_mode": false
-        };
+    const messaging = getMessaging(getApp());
+    const unsubscribe = onMessage(messaging, handleIncomingMessage);
+    notifiee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+      importance: AndroidImportance.HIGH,
+    });
+    return () => unsubscribe();
+  }, [hasPermission]);
 
-        const response = await fetch("https://challenges.cask.com.tr/api", {
-            method: "POST",
-            cache: "no-cache",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
-     */
   return (
     <NavigationContainer>
       <AppNavigator />
