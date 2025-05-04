@@ -1,11 +1,12 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {Text} from 'react-native';
+import LayoutComponent from '../../../components/base/LayoutComponent';
 
 const DefaultScreen = () => {
   return (
-    <View>
-      <Text>DefaultScreen</Text>
-    </View>
+    <LayoutComponent title="Tab 1">
+      <Text>Native Stack Navigator</Text>
+    </LayoutComponent>
   );
 };
 
