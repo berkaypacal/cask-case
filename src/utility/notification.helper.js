@@ -1,3 +1,9 @@
+/**
+ * Utility functions to assist with notification-related operations in a React Native application.
+ *
+ * This module provides functions to format notification titles, messages, and timestamps.
+ */
+
 export const formatNotificationTitle = title => {
   return title?.trim() || 'No Title';
 };

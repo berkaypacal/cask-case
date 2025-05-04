@@ -3,6 +3,13 @@ import {Platform, PermissionsAndroid} from 'react-native';
 import {getApp} from '@react-native-firebase/app';
 import {getMessaging} from '@react-native-firebase/messaging';
 
+/**
+ * Custom hook to handle Firebase Cloud Messaging (FCM) in a React Native application.
+ *
+ * @returns {Object} An object containing the FCM token and the permission status.
+ * @property {string|null} token - The FCM token for the device, or null if not available.
+ * @property {boolean} hasPermission - Indicates whether the app has permission to send notifications.
+ */
 export const useFirebaseMessaging = () => {
   const [token, setToken] = useState(null);
   const [hasPermission, setHasPermission] = useState(false);

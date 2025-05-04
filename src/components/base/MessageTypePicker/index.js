@@ -3,6 +3,14 @@ import {View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import styles from './styles';
 
+/**
+ * MessageTypePicker is a component for selecting a push notification (PN) type.
+ *
+ * @param {Object} props - The props for the component.
+ * @param {string} props.pnType - The currently selected PN type.
+ * @param {Function} props.setPnType - Function to update the selected PN type.
+ * @returns {JSX.Element} The rendered MessageTypePicker component.
+ */
 const MessageTypePicker = ({pnType, setPnType}) => (
   <View style={styles.dropdown}>
     <Picker

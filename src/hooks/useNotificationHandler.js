@@ -5,6 +5,13 @@ import {getMessaging, onMessage} from '@react-native-firebase/messaging';
 import {handleIncomingMessage} from '../firebase/messageHandler';
 import {navigateToNotificationTarget} from '../utility/navigation.helper';
 
+/**
+ * Custom hook to handle notification events and Firebase Cloud Messaging (FCM) in a React Native application.
+ *
+ * @param {boolean} hasPermission - Indicates whether the app has permission to send notifications.
+ *
+ * @returns {void}
+ */
 export const useNotificationHandler = hasPermission => {
   useEffect(() => {
     if (!hasPermission) return;

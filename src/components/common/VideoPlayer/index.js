@@ -4,6 +4,14 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import {extractYoutubeId} from '../../../utility/youtube.helper';
 import styles from './styles';
 
+/**
+ * CustomVideoPlayer component renders a YouTube video player or an error message if the video URL is invalid.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.url - The URL of the YouTube video to play.
+ *
+ * @returns {JSX.Element} The rendered CustomVideoPlayer component.
+ */
 const CustomVideoPlayer = ({url}) => {
   const videoId = extractYoutubeId(url);
 

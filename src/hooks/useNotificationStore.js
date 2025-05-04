@@ -5,6 +5,11 @@ import {
   subscribeNotificationStore,
 } from '../storage/notificationStore';
 
+/**
+ * Custom hook to manage and retrieve notifications from the notification store in a React Native application.
+ *
+ * @returns {Array} An array of notification objects.
+ */
 export const useNotificationStore = () => {
   const [notifications, setNotifications] = useState([]);
 
