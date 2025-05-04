@@ -35,7 +35,6 @@ export const useFirebaseMessaging = () => {
 
         const fcmToken = await messaging.getToken();
         setToken(fcmToken);
-        console.log('FCM Token:', fcmToken);
       } catch (err) {
         console.error('FCM Token Error:', err);
         setHasPermission(false);

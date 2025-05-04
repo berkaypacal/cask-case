@@ -32,7 +32,6 @@ export const useNotificationHandler = hasPermission => {
 
         const pn_type = notification?.data?.pn_type;
         if (pn_type) {
-          console.log(notification);
           navigateToNotificationTarget(
             pn_type,
             pn_type == 1 ? detail : detail.notification,

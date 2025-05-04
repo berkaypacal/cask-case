@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import styles from './styles';
+import NotificationTypes from '../../../constants/NotificationTypes';
 
 /**
  * MessageTypePicker is a component for selecting a push notification (PN) type.
@@ -19,9 +20,9 @@ const MessageTypePicker = ({pnType, setPnType}) => (
       style={styles.picker}
       dropdownIconColor="#999">
       <Picker.Item label="Select PN Type" value="" />
-      <Picker.Item label="Text" value="1" />
-      <Picker.Item label="Image" value="2" />
-      <Picker.Item label="Video" value="3" />
+      <Picker.Item label="Text" value={NotificationTypes.TEXT} />
+      <Picker.Item label="Image" value={NotificationTypes.IMAGE} />
+      <Picker.Item label="Video" value={NotificationTypes.VIDEO} />
     </Picker>
   </View>
 );
