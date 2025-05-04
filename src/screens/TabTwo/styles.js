@@ -5,4 +5,10 @@ export default StyleSheet.create({
     padding: 16,
     width: '100%',
   },
+  warning: {
+    color: 'red',
+    marginTop: 16,
+    fontSize: 16,
+    fontWeight: '500',
+  },
 });

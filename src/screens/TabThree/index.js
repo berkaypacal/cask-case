@@ -1,36 +1,24 @@
 import React from 'react';
-import {FlatList, Text, View, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
+import LayoutComponent from '../../components/base/LayoutComponent';
 import {useNotificationStore} from '../../hooks/useNotificationStore';
+import styles from './styles';
+import NotificationItem from '../../components/base/NotificationItem';
 
-const NotificationScreen = () => {
+const TabThree = () => {
   const notifications = useNotificationStore();
 
   return (
-    <FlatList
-      data={notifications}
-      keyExtractor={(_, i) => i.toString()}
-      renderItem={({item}) => (
-        <View style={styles.item}>
-          <Text style={styles.title}>
-            {item.notification?.title || 'Başlık yok'}
-          </Text>
-          <Text>{item.notification?.body || 'Mesaj yok'}</Text>
-        </View>
-      )}
-      contentContainerStyle={styles.container}
-    />
+    <LayoutComponent title="Tab 3">
+      <FlatList
+        data={notifications}
+        keyExtractor={(_, i) => i.toString()}
+        renderItem={({item}) => <NotificationItem item={item} />}
+        contentContainerStyle={styles.container}
+        initialNumToRender={5}
+      />
+    </LayoutComponent>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {padding: 16},
-  item: {
-    padding: 12,
-    marginBottom: 10,
-    backgroundColor: '#eee',
-    borderRadius: 8,
-  },
-  title: {fontWeight: 'bold', marginBottom: 4},
-});
-
-export default NotificationScreen;
+export default TabThree;

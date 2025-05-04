@@ -1,14 +1,21 @@
 import notifee, {AndroidImportance} from '@notifee/react-native';
 import {addNotification} from '../storage/notificationStore';
+import {
+  formatNotificationTitle,
+  formatNotificationMessage,
+} from '../utility/notification.helper';
 
 export const handleIncomingMessage = async remoteMessage => {
-  if (!remoteMessage) {
-    return;
-  }
+  if (!remoteMessage) return;
+
   await addNotification(remoteMessage);
+
+  const {title, body} = remoteMessage.notification || {};
+  const {pn_type} = remoteMessage.data || {};
+
   await notifee.displayNotification({
-    title: remoteMessage.notification?.title || 'Bildirim',
-    body: remoteMessage.notification?.body || '',
+    title: formatNotificationTitle(title),
+    body: formatNotificationMessage(pn_type, body),
     android: {
       channelId: 'default',
       importance: AndroidImportance.HIGH,
