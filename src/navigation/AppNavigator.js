@@ -32,7 +32,7 @@ const AppNavigator = () => {
         headerShown: false,
         ...tabBarStyles,
       }}
-      initialRouteName={ScreenNames.TAB_ONE}>
+      initialRouteName={ScreenNames.TAB_TWO}>
       <Tab.Screen
         name={ScreenNames.TAB_ONE}
         component={TabOneStack}

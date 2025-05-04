@@ -4,6 +4,9 @@ import { navigationRef } from './src/utility/navigation.helper';
 import { useFirebaseMessaging } from './src/hooks/useFirebaseMessaging';
 import { useNotificationHandler } from './src/hooks/useNotificationHandler';
 import { NotificationProvider } from './src/context/NotificationContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const { hasPermission } = useFirebaseMessaging();
@@ -13,7 +16,9 @@ export default function App() {
   return (
     <NotificationProvider>
       <NavigationContainer ref={navigationRef}>
-        <AppNavigator />
+        <QueryClientProvider client={queryClient}>
+          <AppNavigator />
+        </QueryClientProvider>
       </NavigationContainer>
     </NotificationProvider>
   );

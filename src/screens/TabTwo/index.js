@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState, useCallback} from 'react';
+import {View, Text} from 'react-native';
 import LayoutComponent from '../../components/base/LayoutComponent';
 import styles from './styles';
 import TokenDisplay from '../../components/base/TokenDisplay';
@@ -8,11 +8,21 @@ import DelayInput from '../../components/base/DelayInput';
 import SendButton from '../../components/base/SendButton';
 import {useFirebaseMessaging} from '../../hooks/useFirebaseMessaging';
 import BottomTabLabels from '../../constants/BottomTabLabels';
+import {useSendNotification} from '../../hooks/useSendNotification';
 
 const TabTwo = () => {
   const [pnType, setPnType] = useState('');
   const [delay, setDelay] = useState('');
   const {token, hasPermission} = useFirebaseMessaging();
+  const {mutate, isPending} = useSendNotification();
+
+  const handleSend = useCallback(() => {
+    mutate({
+      fcm_token: token,
+      pn_type: Number(pnType),
+      pn_delay: Number(delay),
+    });
+  }, [token, pnType, delay, mutate]);
 
   return (
     <LayoutComponent title={BottomTabLabels.TAB_TWO}>
@@ -25,7 +35,7 @@ const TabTwo = () => {
           <>
             <MessageTypePicker pnType={pnType} setPnType={setPnType} />
             <DelayInput delay={delay} setDelay={setDelay} />
-            <SendButton />
+            <SendButton onPress={handleSend} isLoading={isPending} />
           </>
         )}
       </View>

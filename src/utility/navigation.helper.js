@@ -7,7 +7,7 @@ export const navigationRef = createNavigationContainerRef();
 
 export const navigateToNotificationTarget = (pn_type, notification = null) => {
   if (!navigationRef.isReady()) return;
-
+  console.log(notification);
   if (notification) {
     setSelectedNotification(notification);
   }
