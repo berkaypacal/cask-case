@@ -21,9 +21,11 @@ export const useNotificationHandler = hasPermission => {
 
     const unsubscribeNotifee = notifee.onForegroundEvent(({type, detail}) => {
       if (type === EventType.PRESS) {
-        const pn_type = detail.notification?.data?.pn_type;
+        const notification = detail.notification;
+
+        const pn_type = notification?.data?.pn_type;
         if (pn_type) {
-          navigateToNotificationTarget(pn_type);
+          navigateToNotificationTarget(pn_type, notification);
         }
       }
     });

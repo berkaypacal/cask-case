@@ -1,11 +1,16 @@
 import {createNavigationContainerRef} from '@react-navigation/native';
 import ScreenNames from '../constants/ScreenNames';
 import NotificationTypes from '../constants/NotificationTypes';
+import {setSelectedNotification} from '../context/NotificationContextHelper';
 
 export const navigationRef = createNavigationContainerRef();
 
-export const navigateToNotificationTarget = pn_type => {
+export const navigateToNotificationTarget = (pn_type, notification = null) => {
   if (!navigationRef.isReady()) return;
+
+  if (notification) {
+    setSelectedNotification(notification);
+  }
 
   switch (pn_type) {
     case NotificationTypes.TEXT:

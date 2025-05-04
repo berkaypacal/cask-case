@@ -13,7 +13,7 @@ const TabThree = () => {
   const handlePress = useCallback(notification => {
     const pn_type = notification?.data?.pn_type;
     if (pn_type) {
-      navigateToNotificationTarget(pn_type);
+      navigateToNotificationTarget(pn_type, notification);
     }
   }, []);
 

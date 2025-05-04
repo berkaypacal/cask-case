@@ -3,6 +3,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import { navigationRef } from './src/utility/navigation.helper';
 import { useFirebaseMessaging } from './src/hooks/useFirebaseMessaging';
 import { useNotificationHandler } from './src/hooks/useNotificationHandler';
+import { NotificationProvider } from './src/context/NotificationContext';
 
 export default function App() {
   const { hasPermission } = useFirebaseMessaging();
@@ -10,8 +11,10 @@ export default function App() {
   useNotificationHandler(hasPermission);
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      <AppNavigator />
-    </NavigationContainer>
+    <NotificationProvider>
+      <NavigationContainer ref={navigationRef}>
+        <AppNavigator />
+      </NavigationContainer>
+    </NotificationProvider>
   );
 }
