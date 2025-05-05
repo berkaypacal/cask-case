@@ -72,7 +72,7 @@ yarn
 After cloning the repository, create a `.env` file manually in the project root directory:
 
 ```env
-BASE_URL=https://cask-api-url.com
+BASE_URL=https://example-cask-api-url.com
 SCOPE=
 ADMMDLID=
 ```
@@ -104,3 +104,15 @@ npx react-native start
 3. Sends a request to the backend via `/api`.
 4. Notification is handled (foreground/background).
 5. Based on `pn_type`, navigates to the corresponding screen.
+
+## Known Issues
+
+- ⚠️ **YouTube Video Playback**
+  - Some YouTube videos may **not play inside the app** due to the video owner's settings that **disable embedding** on third-party applications.
+  - This is **not a bug** in the application.
+  - As a workaround, users can manually open the video link in their browser or the YouTube app.
+
+- ⚠️ **iOS Push Notification Support**
+  - Firebase project configuration is provided and managed by **Cask**.
+  - Therefore, iOS-specific notification permissions and behavior **could not be verified or tested**.
+  - The current implementation is focused on **Android support**.
